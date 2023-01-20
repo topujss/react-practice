@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-taiwind.config.js
+tailwind.config.js
 yarn.lock
 README.md
 
