@@ -1,3 +1,7 @@
+/**React state management
+ * Hook useState /> const [value, set(function)] = useState(initialValue);
+ */
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './pages/About/About';
