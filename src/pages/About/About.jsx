@@ -1,27 +1,28 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
+import Modal from '../../components/Modal/Modal';
 import Title from '../../components/Title/Title';
 
 const colorsArray = [
-  'from-rose-900',
-  'to-pink-900',
-  'from-fuchsia-900',
-  'to-purple-500',
-  'from-violet-900',
-  'to-indigo-500',
-  'from-blue-500',
-  'to-sky-500',
-  'from-cyan-500',
-  'to-teal-500',
-  'from-emerald-500',
-  'to-green-500',
-  'from-lime-500',
-  'to-yellow-500',
-  'from-amber-500',
-  'to-orange-500',
-  'from-red-500',
-  'to-zinc-500',
+  'rose-900',
+  'pink-900',
+  'fuchsia-900',
+  'purple-500',
+  'violet-900',
+  'indigo-500',
+  'blue-500',
+  'sky-500',
+  'cyan-500',
+  'teal-500',
+  'emerald-500',
+  'green-500',
+  'lime-500',
+  'yellow-500',
+  'amber-500',
+  'orange-500',
+  'red-500',
+  'zinc-500',
 ];
 
 // event handler system
@@ -41,11 +42,15 @@ export default function About() {
   // to decrement function
   const handleDec = () => {
     setCount(() => setCount(count <= 0 ? 16 : count - 1));
+    setbg(colorsArray[count]);
   };
+
+  // modal state management
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <>
-      <section className={`w-screen h-screen bg-gradient-to-r ${bg}`}>
+      <section className={`w-screen h-screen ${bg}`}>
         <Header />
         <Title
           title="our About page"
@@ -53,6 +58,23 @@ export default function About() {
           divider={true}
         />
         <div className="colors max-w-screen-xl mx-auto">
+          <div className="modal-btn text-center">
+            {modalShow && (
+              <Modal title="Ahmed topu" hide={setModalShow}>
+                <>
+                  <h1>Im right here</h1>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore doloremque eveniet nostrum
+                    assumenda, sit quo voluptatem nobis officia. Est voluptas maiores illum enim praesentium ipsa?
+                    Corrupti praesentium ex veniam modi.
+                  </p>
+                </>
+              </Modal>
+            )}
+            <button className="p-3 bg-green-700" onClick={() => setModalShow(true)}>
+              Modal
+            </button>
+          </div>
           <div className="counter text-center text-white">
             <h1 className={`text-7xl ${count === 16 ? 'text-black' : 'text-white'}`}>{count}</h1>
             <button className="bg-green-800 px-3 py-2 mr-5 mt-5" onClick={handleInc}>
