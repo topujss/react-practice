@@ -10,16 +10,21 @@ export default function Contact() {
     name: '',
     email: '',
     cell: '',
+    age: '',
+    color: '',
+    gender: '',
+    language: '',
+    dept: '',
   });
 
   // On input change
-  function handleInput(e) {
-    const This = e.target;
+  function handleChange(e) {
+    const { name, value } = e.target;
 
-    setInput({
-      ...input,
-      [This.name]: This.value,
-    });
+    setInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
   // alert state management
@@ -30,7 +35,7 @@ export default function Contact() {
   });
 
   // On form submit event
-  const handleInputSubmit = (e) => {
+  const handleChangeSubmit = (e) => {
     e.preventDefault();
 
     const { name, email, cell } = input;
@@ -80,7 +85,7 @@ export default function Contact() {
             <div className="w-full rounded-lg shadow-lg max-w-lg">
               <div className="p-6 space-y-6">
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900">Create an account</h1>
-                <form className="space-y-4" onSubmit={handleInputSubmit}>
+                <form className="space-y-4" onSubmit={handleChangeSubmit}>
                   {/* if alert true show else hide alert */}
                   {alert.status && <Alert msg={alert.msg} type={alert.type} hide={setAlert} />}
                   <div>
@@ -89,9 +94,9 @@ export default function Contact() {
                     </label>
                     <input
                       type="text"
-                      value={input.name}
                       name="name"
-                      onChange={handleInput}
+                      value={input.name}
+                      onChange={handleChange}
                       className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 outline-none"
                     />
                   </div>
@@ -103,7 +108,7 @@ export default function Contact() {
                       type="email"
                       name="email"
                       value={input.email}
-                      onChange={handleInput}
+                      onChange={handleChange}
                       className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 outline-none"
                       placeholder="name@company.com"
                     />
@@ -116,10 +121,99 @@ export default function Contact() {
                       type="text"
                       name="cell"
                       value={input.cell}
-                      onChange={handleInput}
+                      onChange={handleChange}
                       className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 outline-none"
                       placeholder="248-385-8242"
                     />
+                  </div>
+                  {/* input range tag */}
+                  <div className="block">
+                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">
+                      Age
+                    </label>
+                    <input
+                      name="age"
+                      value={input.age}
+                      onChange={handleChange}
+                      className="block"
+                      type="range"
+                      step={1}
+                      min="14"
+                      max="70"
+                    />
+                  </div>
+                  {/* input color tag */}
+                  <div className="block">
+                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">
+                      Color
+                    </label>
+                    <input
+                      name="color"
+                      value={input.color}
+                      onChange={handleChange}
+                      className="block"
+                      type="color"
+                      draggable={false}
+                      id=""
+                    />
+                  </div>
+
+                  {/* input radio tag */}
+                  <div>
+                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">
+                      Gender
+                    </label>
+                    <label htmlFor="link" className="block">
+                      <input type="radio" name="male" value="male" onChange={handleChange} id="link" /> Male
+                    </label>
+                    <label htmlFor="" className="block">
+                      <input type="radio" name="female" value="female" onChange={handleChange} id="" /> female
+                    </label>
+                    <label htmlFor="">
+                      <input type="radio" name="others" value="others" onChange={handleChange} id="" /> Others
+                    </label>
+                  </div>
+                  {/* select option tag */}
+                  <div className="block mb-2">
+                    <label htmlFor="" className="block  text-sm font-medium text-gray-900">
+                      Languages
+                    </label>
+                    <select
+                      name="language"
+                      value={input.language}
+                      onChange={handleChange}
+                      className="capitalize focus:outline-none"
+                      id=""
+                    >
+                      <option value="select">-Select-</option>
+                      <option value="javascript">javascript</option>
+                      <option value="python">python</option>
+                      <option value="java">java</option>
+                      <option value="csharp">cSharp</option>
+                      <option value="go">go</option>
+                      <option value="rust">rust</option>
+                    </select>
+                  </div>
+                  {/* input checkbox tag */}
+                  <div className="block mb-2">
+                    <label htmlFor="" className="block  text-sm font-medium text-gray-900">
+                      Dept
+                    </label>
+                    <label htmlFor="">
+                      <input type="checkbox" /> javascript stack
+                    </label>
+                    <label htmlFor="" className="mx-4">
+                      <input type="checkbox" /> django stack
+                    </label>
+                    <label htmlFor="">
+                      <input type="checkbox" /> java stack
+                    </label>
+                    <label htmlFor="" className="mx-4">
+                      <input type="checkbox" /> go stack
+                    </label>
+                    <label htmlFor="">
+                      <input type="checkbox" /> php stack
+                    </label>
                   </div>
                   <button
                     type="submit"
