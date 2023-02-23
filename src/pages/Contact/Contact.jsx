@@ -17,6 +17,17 @@ export default function Contact() {
     dept: '',
   });
 
+  const [checkedItems, setCheckedItems] = useState({});
+
+  const handleCheckbox = (e) => {
+    const { name, checked } = e.target;
+
+    setCheckedItems({
+      ...checkedItems,
+      [name]: checked,
+    });
+  };
+
   // On input change
   function handleChange(e) {
     const { name, value } = e.target;
@@ -70,6 +81,8 @@ export default function Contact() {
     }
   };
 
+  const defaultLabelStyle = `text-sky-700 font-bold mb-2 block`;
+
   return (
     <>
       <section>
@@ -80,7 +93,7 @@ export default function Contact() {
           divider={true}
         />
 
-        <div className="main-form">
+        <div className="main-form ">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
             <div className="w-full rounded-lg shadow-lg max-w-lg">
               <div className="p-6 space-y-6">
@@ -89,7 +102,7 @@ export default function Contact() {
                   {/* if alert true show else hide alert */}
                   {alert.status && <Alert msg={alert.msg} type={alert.type} hide={setAlert} />}
                   <div>
-                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label htmlFor="" className={defaultLabelStyle}>
                       Your Name
                     </label>
                     <input
@@ -101,7 +114,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">
+                    <label htmlFor="" className={defaultLabelStyle}>
                       Your email
                     </label>
                     <input
@@ -114,7 +127,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">
+                    <label htmlFor="" className={defaultLabelStyle}>
                       Phone num
                     </label>
                     <input
@@ -128,7 +141,7 @@ export default function Contact() {
                   </div>
                   {/* input range tag */}
                   <div className="block">
-                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">
+                    <label htmlFor="" className={defaultLabelStyle}>
                       Age
                     </label>
                     <input
@@ -140,11 +153,12 @@ export default function Contact() {
                       step={1}
                       min="14"
                       max="70"
-                    />
+                    />{' '}
+                    <span className="text-gray-500">{input.age}</span>
                   </div>
                   {/* input color tag */}
                   <div className="block">
-                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">
+                    <label htmlFor="" className={defaultLabelStyle}>
                       Color
                     </label>
                     <input
@@ -156,26 +170,27 @@ export default function Contact() {
                       draggable={false}
                       id=""
                     />
+                    <span className="text-gray-500">{input.color}</span>
                   </div>
 
                   {/* input radio tag */}
                   <div>
-                    <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">
+                    <label htmlFor="" className={defaultLabelStyle}>
                       Gender
                     </label>
                     <label htmlFor="link" className="block">
-                      <input type="radio" name="male" value="male" onChange={handleChange} id="link" /> Male
+                      <input type="radio" name="gender" value="male" onChange={handleChange} id="link" /> Male
                     </label>
                     <label htmlFor="" className="block">
-                      <input type="radio" name="female" value="female" onChange={handleChange} id="" /> female
+                      <input type="radio" name="gender" value="female" onChange={handleChange} id="" /> female
                     </label>
                     <label htmlFor="">
-                      <input type="radio" name="others" value="others" onChange={handleChange} id="" /> Others
+                      <input type="radio" name="gender" value="others" onChange={handleChange} id="" /> Others
                     </label>
                   </div>
                   {/* select option tag */}
                   <div className="block mb-2">
-                    <label htmlFor="" className="block  text-sm font-medium text-gray-900">
+                    <label htmlFor="" className={defaultLabelStyle}>
                       Languages
                     </label>
                     <select
@@ -196,28 +211,58 @@ export default function Contact() {
                   </div>
                   {/* input checkbox tag */}
                   <div className="block mb-2">
-                    <label htmlFor="" className="block  text-sm font-medium text-gray-900">
-                      Dept
+                    <label htmlFor="" className={defaultLabelStyle}>
+                      Department
                     </label>
                     <label htmlFor="">
-                      <input type="checkbox" /> javascript stack
+                      <input
+                        name="dept"
+                        checked={checkedItems['javascript stack']}
+                        onChange={handleCheckbox}
+                        type="checkbox"
+                      />{' '}
+                      javascript stack
                     </label>
-                    <label htmlFor="" className="mx-4">
-                      <input type="checkbox" /> django stack
+                    <label htmlFor="" className="mx-4 block">
+                      <input
+                        name="dept2"
+                        checked={checkedItems['django stack']}
+                        onChange={handleCheckbox}
+                        type="checkbox"
+                      />{' '}
+                      django stack
                     </label>
                     <label htmlFor="">
-                      <input type="checkbox" /> java stack
+                      <input
+                        name="dept3"
+                        checked={checkedItems['java stack']}
+                        onChange={handleCheckbox}
+                        type="checkbox"
+                      />
+                      java stack
                     </label>
-                    <label htmlFor="" className="mx-4">
-                      <input type="checkbox" /> go stack
+                    <label htmlFor="" className="mx-4 block">
+                      <input
+                        name="dept4"
+                        checked={checkedItems['go stack']}
+                        onChange={handleCheckbox}
+                        type="checkbox"
+                      />{' '}
+                      go stack
                     </label>
                     <label htmlFor="">
-                      <input type="checkbox" /> php stack
+                      <input
+                        name="dept5"
+                        checked={checkedItems['php stack']}
+                        onChange={handleCheckbox}
+                        type="checkbox"
+                      />{' '}
+                      php stack
                     </label>
                   </div>
                   <button
                     type="submit"
-                    className="w-full text-white bg-blue-600 font-medium rounded-lg px-5 py-2.5 text-center"
+                    className={`w-full text-white bg-blue-600 font-medium rounded-lg px-5 py-2.5 text-center`}
                   >
                     Create an account
                   </button>
