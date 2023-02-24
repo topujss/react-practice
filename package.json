@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "push": "git add . && git commit -m \"Practice ongoing\" && git push",
+    "push": "git add . && git commit -m \"hoc component start\" && git push",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

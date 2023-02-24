@@ -34,6 +34,7 @@ const ImgPrev = () => {
     const cloudName = `dieggor6k`;
     const preSet = `a7fh1vif`;
     const URL = `https://api.cloudinary.com/v1_1/dieggor6k/image/upload`;
+    let i = 1;
 
     // create a new form data
     const form_data = new FormData();
@@ -49,8 +50,12 @@ const ImgPrev = () => {
         .post(URL, form_data)
         .then((res) => {
           console.log(res.data);
-          setImgs([]); // make the state empty after uploading
-          // setLoader(false);
+
+          if (i === img.length) {
+            setImgs([]); // make the state empty after uploading
+            setLoader(false);
+          }
+          i++;
         })
         .catch((err) => {
           console.log(err.message);
