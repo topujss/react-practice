@@ -2,7 +2,6 @@
   "name": "practice",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -15,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "push": "git add . && git commit -m \"hoc component start\" && git push",
+    "push": "git add . && git commit -m \"hoc, rp, react portal\" && git push",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
