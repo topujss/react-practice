@@ -7,7 +7,6 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import InnerMenu from './components/InnerMenu';
-import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
 import Feature from './pages/Feature/Feature';
 import Home from './pages/Home/Home';

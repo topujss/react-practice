@@ -26,7 +26,7 @@ export default function SingleProduct() {
             <img className="max-w-lg" src={photo} alt="product image" />
           </div>
           <div class="product-details p-5">
-            <h5 class="text-3xl font-medium text-gray-900 dark:text-white">{name}</h5>
+            <h5 class="text-3xl font-medium text-gray-900 dark:text-white">{name}</h5>;
             <div class="flex items-center my-7">
               <IoStar className="text-2xl text-yellow-300" />
               <IoStar className="text-2xl text-yellow-300" />

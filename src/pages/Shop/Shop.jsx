@@ -1,8 +1,13 @@
 import Header from '../../components/Header/Header';
 import { IoStar } from 'react-icons/io5';
 import { product } from '../../faker/product';
-import { Link,  useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import RenderProps from '../../components/RenderProps';
+
+/**
+ * context
+ * const [initialValue, setValue] = useContext(contextName)
+ */
 
 export default function Shop() {
   const navigate = useNavigate();
@@ -14,6 +19,7 @@ export default function Shop() {
       navigate('/');
     }
   };
+
 
   return (
     <>
