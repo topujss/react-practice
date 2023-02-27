@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Header() {
   return (
     <>
-      <section className=" shadow-sm">
+      <section className="mb-5 shadow-sm">
         <header className="max-w-screen-xl mx-auto flex justify-between items-center py-5">
           <Link to="/" className="logo">
             <img className="w-52" src="https://download.blender.org/branding/blender_logo.png" alt="" />
@@ -11,19 +11,22 @@ export default function Header() {
           <nav>
             <ul className="flex gap-x-5 text-xl font-light">
               <li>
-                <Link to="/">Home</Link>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <NavLink to="/feature">Feature</NavLink>
               </li>
               <li>
-                <Link to="/shop">Service</Link>
+                <NavLink to="/about">About</NavLink>
               </li>
               <li>
-                <Link to="/team">Team</Link>
+                <NavLink to="/shop">Service</NavLink>
               </li>
               <li>
-                <Link to="/contact">Contact</Link>
+                <NavLink to="/team">Team</NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact">Contact</NavLink>
               </li>
             </ul>
           </nav>

@@ -1,10 +1,20 @@
 import Header from '../../components/Header/Header';
 import { IoStar } from 'react-icons/io5';
 import { product } from '../../faker/product';
-import { Link } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import RenderProps from '../../components/RenderProps';
 
 export default function Shop() {
+  const navigate = useNavigate();
+
+  const handleStock = (stock) => {
+    if (stock >= 0) {
+      alert('Out of stock');
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <>
       <Header />
@@ -22,6 +32,9 @@ export default function Shop() {
                       </div>
                       <div class="p-3">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900">{product.name}</h5>
+                        <h5 class="text-xl font-semibold tracking-tight text-emerald-500">
+                          Stock: {product.stock}
+                        </h5>
 
                         <div class="flex items-center mt-2.5 mb-5">
                           <IoStar className="text-xl text-yellow-300" />
@@ -29,7 +42,7 @@ export default function Shop() {
                           <IoStar className="text-xl text-yellow-300" />
                           <IoStar className="text-xl text-yellow-300" />
                           <IoStar className="text-xl text-yellow-300" />
-                          <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
+                          <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded ml-3">
                             5.0
                           </span>
                         </div>
@@ -45,6 +58,7 @@ export default function Shop() {
                             <span className="text-3xl font-bold text-gray-900">{`$${product.regular_price}`}</span>
                           )}
                           <Link
+                            onClick={() => handleStock(product.stock)}
                             to={`/shop/${product.slug}`}
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                           >

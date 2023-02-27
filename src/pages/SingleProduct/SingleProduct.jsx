@@ -1,10 +1,19 @@
 import Header from '../../components/Header/Header';
 import { IoStar } from 'react-icons/io5';
-import { useParams } from 'react-router-dom';
+import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { product } from '../../faker/product';
 
 export default function SingleProduct() {
+  // useParams
   const { slug } = useParams();
+
+  // useSearchParams
+  const searchParams = useSearchParams();
+  console.log(searchParams);
+
+  // useLocation to find status - gives hash, key, pathname, search, state
+  const locate = useLocation();
+  console.log(locate);
 
   const { name, photo, desc, regular_price, sale_price } = product.find((data) => data.slug === slug);
 
@@ -42,12 +51,12 @@ export default function SingleProduct() {
 
               <h2 className="font-bold my-3 pt-5 border-t-2 border-rose-700">About this product</h2>
               <p>{desc}</p>
-              <a
-                href="#"
+              <Link
+                to="?location=dc&word=sale"
                 className="text-white mt-10 bg-blue-700 hover:bg-blue-800 font-medium rounded-lg px-5 py-4 text-center block"
               >
                 View Product
-              </a>
+              </Link>
             </div>
           </div>
         </div>

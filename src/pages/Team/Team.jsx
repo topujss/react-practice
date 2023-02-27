@@ -6,16 +6,7 @@ import { team } from '../../faker/team';
 import Header from '../../components/Header/Header';
 
 export default function Team({ isLoggedIn }) {
-  if (isLoggedIn) {
-    return (
-      <>
-        <Header />
-        <section className="bg-teal-500 py-14">
-          <Title title="Please Log In first!" subTitle="" divider={true} />
-        </section>
-      </>
-    );
-  } else {
+  if (isLoggedIn === true) {
     return (
       <>
         <Header />
@@ -32,6 +23,15 @@ export default function Team({ isLoggedIn }) {
               ))}
             </div>
           </div>
+        </section>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Header />
+        <section className="bg-teal-500 py-14">
+          <Title title="Please Log In first!" subTitle="Login to see our team" divider={true} />
         </section>
       </>
     );

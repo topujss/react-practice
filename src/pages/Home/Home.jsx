@@ -4,7 +4,9 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="max-w-screen-lg mx-auto "></div>
+      <div className="max-w-screen-lg mx-auto ">
+        <h1> I am at home</h1>
+      </div>
     </>
   );
 };
